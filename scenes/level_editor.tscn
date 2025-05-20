@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3hwb20fx0jkt"]
+
+[ext_resource type="Script" uid="uid://l833x4j44sn8" path="res://scripts/level_editor.gd" id="1_7c6bw"]
+[ext_resource type="PackedScene" uid="uid://ci30gp6r0mqmn" path="res://scenes/game_ui.tscn" id="2_lwxsd"]
+
+[node name="LevelEditor" type="Node2D"]
+script = ExtResource("1_7c6bw")
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="GameUI" parent="." instance=ExtResource("2_lwxsd")]
+
+[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]

@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvgcch05lickm"]
+
+[ext_resource type="PackedScene" uid="uid://dhlvscoke51pf" path="res://scenes/hit_line.tscn" id="1_f4ij2"]
+[ext_resource type="PackedScene" uid="uid://d3hwb20fx0jkt" path="res://scenes/level_editor.tscn" id="3_txect"]
+
+[node name="Game" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -2239.0
+offset_top = -1016.0
+offset_right = 2193.0
+offset_bottom = 1056.0
+size_flags_horizontal = 4
+color = Color(0.0488223, 5.7426e-05, 0.122333, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="HitLine" parent="." instance=ExtResource("1_f4ij2")]
+position = Vector2(-144, 284)
+lane_name = "Lane1"
+
+[node name="HitLine2" parent="." instance=ExtResource("1_f4ij2")]
+position = Vector2(-48, 284)
+frame = 1
+lane_name = "Lane2"
+
+[node name="HitLine3" parent="." instance=ExtResource("1_f4ij2")]
+position = Vector2(48, 284)
+frame = 2
+lane_name = "Lane3"
+
+[node name="HitLine4" parent="." instance=ExtResource("1_f4ij2")]
+position = Vector2(144, 284)
+frame = 3
+lane_name = "Lane4"
+
+[node name="LevelEditor" parent="." instance=ExtResource("3_txect")]

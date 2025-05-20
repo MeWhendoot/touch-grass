@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=3 uid="uid://mkfdnx881r8b"]
+
+[ext_resource type="Script" uid="uid://883824krtvto" path="res://scripts/score_hit_text.gd" id="1_nt2bv"]
+[ext_resource type="FontFile" uid="uid://b0n31aftfbkjc" path="res://assets/fonts/Bread_Smile.ttf" id="2_vat1f"]
+
+[sub_resource type="Animation" id="Animation_3ccje"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitAccText:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitAccText:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-136, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4gile"]
+resource_name = "fall"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitAccText:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitAccText:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-136, -65), Vector2(-136, -75)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8c2dy"]
+_data = {
+&"RESET": SubResource("Animation_3ccje"),
+&"fall": SubResource("Animation_4gile")
+}
+
+[node name="ScoreHitText" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nt2bv")
+
+[node name="HitAccText" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = -136.0
+offset_right = 136.0
+offset_bottom = 80.0
+theme_override_colors/default_color = Color(0.954458, 3.60981e-06, 1.34766e-06, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("2_vat1f")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[center]MISS"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8c2dy")
+}
+autoplay = "fall"

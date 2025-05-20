@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://duc4uf53lkaw4"]
+
+[node name="UI" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_right = 324.0
+offset_bottom = 170.0
+theme_override_font_sizes/bold_italics_font_size = 10
+theme_override_font_sizes/normal_font_size = 50
+text = "0"
